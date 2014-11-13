@@ -1,0 +1,29 @@
+﻿@using MemeCollection.Domain.Entities;
+@model IEnumerable<Meme>
+
+@{
+    ViewBag.Title = "Memes";
+}
+
+    @foreach (var m in Model)
+    {
+            <div class="row well">
+                <div class="col-xs-12 col-sm-6 col-md-4"><strong><a href="@m.ImageURI">@m.Title</a></strong></div>
+                <div class="col-xs-12 col-sm-6 col-md-4"><i>@m.Genre</i></div>
+                <div class="col-xs-12 col-sm-12 col-md-4"><button type="button" class="btn btn-default">@Html.ActionLink("Delete", "Delete", new { memeID = @m.MemeID })</button></div>
+                <div class="col-xs-12 col-sm-12 col-md-12">@m.Description</div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12"> </div>
+    }
+
+<div class="btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default">@Html.ActionLink("Create a new meme", "Create")</button>
+    </div>
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default">@Html.ActionLink("Sort by Genre", "List", new { method = 2 })</button>
+    </div>
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default">@Html.ActionLink("Sort by Order Added", "List", new { method = 1 })</button>
+    </div>
+</div>
